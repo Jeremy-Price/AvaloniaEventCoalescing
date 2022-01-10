@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>ConsoleApp13</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="0.10.11" />
+      <PackageReference Include="Avalonia.Desktop" Version="0.10.11" />
+      <PackageReference Include="Avalonia.Native" Version="0.10.11" />
+      <PackageReference Include="Avalonia.Win32" Version="0.10.11" />
+      <PackageReference Include="Avalonia.X11" Version="0.10.11" />
+    </ItemGroup>
+
+</Project>
