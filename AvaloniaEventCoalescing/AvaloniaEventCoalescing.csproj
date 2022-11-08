@@ -9,11 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="0.10.11" />
-      <PackageReference Include="Avalonia.Desktop" Version="0.10.11" />
-      <PackageReference Include="Avalonia.Native" Version="0.10.11" />
-      <PackageReference Include="Avalonia.Win32" Version="0.10.11" />
-      <PackageReference Include="Avalonia.X11" Version="0.10.11" />
+      <PackageReference Include="Avalonia" Version="11.0.999-cibuild0025729-beta" />
+      <PackageReference Include="Avalonia.Desktop" Version="11.0.999-cibuild0025729-beta" />
+      <PackageReference Include="Avalonia.Native" Version="11.0.999-cibuild0025729-beta" />
+      <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.999-cibuild0025729-beta" />
+      <PackageReference Include="Avalonia.Win32" Version="11.0.999-cibuild0025729-beta" />
+      <PackageReference Include="Avalonia.X11" Version="11.0.999-cibuild0025729-beta" />
     </ItemGroup>
 
 </Project>

@@ -1,9 +1,12 @@
-﻿using Avalonia;
+﻿using System;
+using System.Threading;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.Media;
+using Avalonia.Themes.Fluent;
 
 public static class ExampleAvaloniaApp
 {
@@ -19,7 +22,8 @@ class AppExample : Application
 {
     public override void Initialize()
     {
-        Styles.Add(new Avalonia.Themes.Default.DefaultTheme());
+        //Styles.Add(new Avalonia.Themes.Default.DefaultTheme());
+        Styles.Add(new FluentTheme((Uri)null));
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -52,7 +56,6 @@ class WinExample : Window
     {
         _isDrawing = false;
         _pointLast = new Point(double.NaN, double.NaN);
-        Title = string.Empty;
     }
 
     protected override void OnPointerMoved(PointerEventArgs e)
@@ -60,26 +63,31 @@ class WinExample : Window
         if (!_isDrawing)
             return;
 
-        Title = e.Pointer.Type.ToString();
-        
         // Pointer events are missed.
         DoExpensiveWork();
 
-        Point pointCur = e.GetPosition(_canvas);
-
-        if (!double.IsNaN(_pointLast.X))
+        int c = 0;
+        foreach (PointerPoint pointer in e.GetIntermediatePoints(this))
         {
-            Line line = new Line()
-            {
-                Stroke = Brushes.Red,
-                StartPoint = _pointLast,
-                EndPoint = pointCur
-            };
+            c++;
+            Point pointCur = pointer.Position;
             
-            _canvas.Children.Add(line);
+            if (!double.IsNaN(_pointLast.X))
+            {
+                Line line = new Line()
+                {
+                    Stroke = Brushes.Red,
+                    StartPoint = _pointLast,
+                    EndPoint = pointCur
+                };
+
+                _canvas.Children.Add(line);
+            }
+
+            _pointLast = pointCur;
         }
 
-        _pointLast = pointCur;
+        Title = c.ToString();
     }
 
     protected override void OnTextInput(TextInputEventArgs e)
